@@ -1,0 +1,124 @@
+body {
+      font-family: Arial, sans-serif;
+      background: #fbfbf7;
+    }
+    .signup-form {
+      margin-top: 4rem;
+      margin-left: 8rem;
+      margin-bottom: 1em;
+      padding: .2em .5em;
+      width: 65%;
+    }
+    .signup-form h2 {
+      margin-bottom: 2em;
+      color: #3c3c36;
+      text-align: center;
+    }
+    .signup-form label {
+    display: block;
+    margin-left: 1em;
+    margin-bottom: 2.3em;
+    font-size: .9em;
+    font-weight: bold;   
+    }
+    .signup-form input,
+    .signup-form select {
+    width: 90%;
+    height: 2em;
+    margin-bottom: 1.4em;
+    margin-left: .8em;
+    border: 1px solid #000;
+    border-radius: 6px;
+    }
+    .signup-form button {
+      width: 90%;
+      margin-left: .8em;
+      margin-bottom: 1em;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: .6em;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .signup-form button:hover {
+      background: #0056b3;
+    }
+.top-bar-signup {
+    position: fixed;
+    top: 0;
+    left: 8%;
+    width: 77%;
+    height: 10%;
+    padding-top: .5rem;
+    background-color: #fbfbf7;
+    opacity: 98%;
+    z-index: 10;
+}
+.labels1 {
+    width: 20%;
+    align-items: flex-end;
+}
+.inputs1 {
+    width: 35%;
+}
+.labels2 {
+    width: 15%;
+}
+.inputs2 {
+    width: 35%;
+}
+
+.password-container {
+  margin-top: 1em;
+  position: relative;
+  display: block; /* or block depending on layout */
+}
+
+.explanation {
+  font-size: .75em;
+  margin-top: .2em;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 3em;
+  right: .75em;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+.main-logo-signup {
+    width: 6.5em;
+    height: 2em;
+    margin-left: 4em;
+    background-image: url("../graphics/logo2.jpg");
+}
+.error {
+  margin-top: 4em;
+  font-size: .9em;
+  font-family: Arial, Helvetica, sans-serif;
+  color:red;
+}
+@media screen and (max-width: 799px) {
+.signup-form {
+      margin-top: 1.5rem;
+      margin-left: 0;
+      width: 98%;
+  }
+.labels1 {
+  width: 45%;
+}
+.inputs1 {
+  width: 55%;
+}
+.modal-content {
+  width: 80%;
+}  
+}
