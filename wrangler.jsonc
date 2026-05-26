@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gopress-frontend",
+
+  "main": "viewer.js",
+
+  "compatibility_date": "2026-05-26",
+
+  "assets": {
+    "directory": "."
+  },
+
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
