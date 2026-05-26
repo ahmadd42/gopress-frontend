@@ -23,7 +23,7 @@ export default {
     const url = new URL(request.url);
 
     // Dynamic route
-    if (url.pathname === "/view") {
+    if (url.pathname === "/content") {
 
       return new Response(`
         <html>
