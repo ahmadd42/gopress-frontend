@@ -28,7 +28,7 @@ export default {
 
     if(match) {
 
-    const parts = url.split("/");
+    //const parts = url.split("/");
 
 
 /*    if (!match) {
