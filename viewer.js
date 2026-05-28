@@ -28,6 +28,70 @@ export default {
 
     if(match) {
 
+try {
+
+        // Call backend API
+        const apiResponse = await fetch(
+          "https://go-press-backend-production.up.railway.app/files/gettitleanddes",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+              contentid: match[1]
+            })
+          }
+        );
+
+        const data = await apiResponse.json();
+
+        // Load HTML template
+        const templateResponse = await env.ASSETS.fetch(
+          new Request(
+            new URL("/view/index.html", request.url)
+          )
+        );
+
+        let html = await templateResponse.text();
+
+        // Replace SEO placeholders
+        html = html.replace(
+          /__TITLE__/g,
+          data.title || "GoPress - share your stuff"
+        );
+
+        html = html.replace(
+          /__DESCRIPTION__/g,
+          data.description || "Document Viewer"
+        );
+
+        // Optional canonical URL
+        html = html.replace(
+          /__CANONICAL__/g,
+          `https://gopress.online/viewer/${match[1]}/${match[2]}`
+        );
+
+        return new Response(html, {
+          headers: {
+            "content-type": "text/html;charset=UTF-8"
+          }
+        });
+
+      }
+      catch (err) {
+
+        return new Response(
+          "Internal Server Error",
+          {
+            status: 500
+          }
+        );
+
+      }
+
     //const parts = url.split("/");
 
 
@@ -45,7 +109,7 @@ export default {
 //      const slug = match[1];
     
 
-      return new Response(`
+/*      return new Response(`
         <html>
           <head>
             <title>FUNCTION WORKING</title>
@@ -60,7 +124,7 @@ export default {
         headers: {
           "content-type": "text/html"
         }
-      });
+      });*/
     }
     // Serve normal static files
     return env.ASSETS.fetch(request);
