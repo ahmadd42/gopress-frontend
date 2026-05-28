@@ -32,7 +32,7 @@ try {
 
         // Call backend API
         const apiResponse = await fetch(
-          "https://go-press-backend-production.up.railway.app/files/gettitleanddes",
+          "https://i-press-backend-production.up.railway.app/files/gettitleanddes",
           {
             method: "POST",
 
