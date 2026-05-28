@@ -52,7 +52,7 @@ export default {
           </head>
           <body>
             Worker route works
-            <h3>id = ${parts[3]}</h3>
+            <h3>id = ${match[1]}</h3>
           </body>
         </html>
       `, {
