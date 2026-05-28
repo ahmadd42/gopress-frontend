@@ -47,6 +47,7 @@ try {
         );
 
         const data = await apiResponse.json();
+        const item = data[0];
 
         // Load HTML template
         const templateResponse = await env.ASSETS.fetch(
@@ -60,12 +61,12 @@ try {
         // Replace SEO placeholders
         html = html.replace(
           /__TITLE__/g,
-          data.title || "GoPress - share your stuff"
+          item?.title || "GoPress - share your stuff"
         );
 
         html = html.replace(
           /__DESCRIPTION__/g,
-          data.descr || "Document Viewer"
+          item?.descr || "Document Viewer"
         );
 
         // Optional canonical URL
@@ -89,8 +90,8 @@ try {
             Worker route works
             <h3>id = ${match[1]}</h3>
             <h3>slug = ${match[2]}</h3>
-            <h3>${data.title}</h3>
-            <h3>${data.descr}</h3>
+            <h3>${item.title}</h3>
+            <h3>${item.descr}</h3>
           </body>
         </html>
       `, {
