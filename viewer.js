@@ -22,7 +22,7 @@ export default {
 
     const url = new URL(request.url);
 
-    if(url.pathname === "/viewer") {
+    if(url.pathname === "/viewer/:id/:slug") {
 
 //    const parts = url.split("/");
 
