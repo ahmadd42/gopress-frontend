@@ -21,26 +21,24 @@ export default {
   async fetch(request, env) {
 
     const url = new URL(request.url);
-    let id, slug;
 
     if(url.pathname === "/viewer") {
 
-      const match = url.pathname.match(
-      /^\/viewer\/([^\/]+)\/([^\/]+)$/
-    );
+    const parts = url.pathname.split("/");
 
-    if (!match) {
+
+/*    if (!match) {
         return new Response("400 Invalid URL", {
         status: 400,
         headers: {
           "content-type": "text/plain"
             }
       });
-    }
+    }*/
 
-      id = match[1];
+      const id = match[3];
 
-      slug = match[2];
+      const slug = match[4];
     
 
       return new Response(`
