@@ -53,6 +53,7 @@ export default {
           <body>
             Worker route works
             <h3>id = ${match[1]}</h3>
+            <h3>slug = ${match[2]}</h3>
           </body>
         </html>
       `, {
