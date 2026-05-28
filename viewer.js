@@ -65,7 +65,7 @@ try {
 
         html = html.replace(
           /__DESCRIPTION__/g,
-          data.description || "Document Viewer"
+          data.descr || "Document Viewer"
         );
 
         // Optional canonical URL
