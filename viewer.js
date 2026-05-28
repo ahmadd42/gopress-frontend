@@ -75,32 +75,18 @@ try {
           `https://gopress.online/viewer/${match[1]}/${match[2]}`
         );
 
-/*        return new Response(html, {
+        // Optional canonical URL
+        html = html.replace(
+          /__DOCID__/g,
+          match[1]
+        );
+
+
+        return new Response(html, {
           headers: {
             "content-type": "text/html;charset=UTF-8"
           }
-        });*/
-
-      return new Response(`
-        <html>
-          <head>
-            <title>FUNCTION WORKING</title>
-          </head>
-          <body>
-            Worker route works
-            <h3>id = ${match[1]}</h3>
-            <h3>slug = ${match[2]}</h3>
-            <h3>${item.title}</h3>
-            <h3>${item.descr}</h3>
-          </body>
-        </html>
-      `, {
-        headers: {
-          "content-type": "text/html"
-        }
-      });
-
-
+        });
       }
       catch (err) {
 
