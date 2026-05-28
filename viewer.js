@@ -24,7 +24,7 @@ export default {
 
     if(url.pathname === "/viewer") {
 
-    const parts = url.pathname.split("/");
+//    const parts = url.split("/");
 
 
 /*    if (!match) {
@@ -36,9 +36,9 @@ export default {
       });
     }*/
 
-      const id = match[0];
+///      const id = match[0];
 
-      const slug = match[1];
+//      const slug = match[1];
     
 
       return new Response(`
@@ -48,8 +48,7 @@ export default {
           </head>
           <body>
             Worker route works
-            <h3>id = ${id}</h3>
-            <h3>slug = ${slug}</h3>
+            <h3>id = ${url}</h3>
           </body>
         </html>
       `, {
