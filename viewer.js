@@ -89,6 +89,8 @@ try {
             Worker route works
             <h3>id = ${match[1]}</h3>
             <h3>slug = ${match[2]}</h3>
+            <h3>${data.title}</h3>
+            <h3>${data.descr}</h3>
           </body>
         </html>
       `, {
