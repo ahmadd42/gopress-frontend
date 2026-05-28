@@ -36,9 +36,9 @@ export default {
       });
     }*/
 
-      const id = match[3];
+      const id = match[0];
 
-      const slug = match[4];
+      const slug = match[1];
     
 
       return new Response(`
