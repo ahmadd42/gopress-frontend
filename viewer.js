@@ -84,7 +84,7 @@ try {
       catch (err) {
 
         return new Response(
-          "Internal Server Error",
+          "Internal server error, " + err.message,
           {
             status: 500
           }
