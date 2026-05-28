@@ -22,7 +22,11 @@ export default {
 
     const url = new URL(request.url);
 
-    if(url.pathname === "/viewer/:id/:slug") {
+     const match = url.pathname.match(
+      /^\/viewer\/([^\/]+)\/([^\/]+)$/
+    );
+
+    if(match) {
 
 //    const parts = url.split("/");
 
