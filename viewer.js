@@ -127,7 +127,7 @@ try {
       });*/
     }
     // Serve normal static files
-    return env.ASSETS.fetch(request);
+    return fetch(request);
 
   }
 
