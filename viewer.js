@@ -37,6 +37,7 @@ try {
         const shortText = des.slice(0, 300);
         const docURL = `https://content.gopress.online/content/${match[1]}${extension}`;
         const view_html = generateViewerHTML(docURL, extension, dld_status);
+        const screen = (window.innerWidth < 1000) ? "small" : "big";
 
 
         // Load HTML template
@@ -175,7 +176,7 @@ function generateViewerHTML(path, ext, d_status) {
 var viewer_html = "";
 
 if(ext === ".pdf") {
-viewer_html = `<iframe id="docViewer" class="doc-viewer pdf-frame" src="../web/viewer.html?file=${path}" frameborder="0" oncontextmenu="return false"></iframe>`;
+viewer_html = `<iframe id="docViewer" class="doc-viewer pdf-frame" src="/web/viewer.html?file=${path}" frameborder="0" oncontextmenu="return false"></iframe>`;
 }
 else if(ext === ".jpg" || ext === ".jpeg" || ext === ".gif" || ext === ".png" || ext === ".tiff") {
 
