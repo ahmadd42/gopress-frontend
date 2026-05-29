@@ -67,23 +67,23 @@ function loadContent() {
     window.location.href = "index-s.html?id=" + value + "&ess=" + slug;
   }
 
-  /*getSigninStatus();
+  getSigninStatus();
   fetchDocument();
   fetchComments();
   fetchLikes();
-  fetchDislikes();*/
+  fetchDislikes();
 }
 
-//document.getElementById("home_btn").onclick = () => {
-//window.location.href = "/i-press";
-//};
+document.getElementById("home_btn").onclick = () => {
+window.location.href = "/";
+};
 
 function goShare() {
   if(localStorage.getItem("loginToken"))  {
     if(window.innerWidth < 800)
-      window.location.href = "../users/share-s.html";
+      window.location.href = "../../users/share-s.html";
     else
-      window.location.href = "../users/share.html";
+      window.location.href = "../../users/share.html";
   }
 }
 
@@ -108,7 +108,7 @@ function getSigninStatus() {
   }
   else {
     profile_area.className = "signin";
-    profile_area.innerHTML = `<a href="../users/login.html">Sign in to get personalized feeds, and to upload and engage with the content</a>`;
+    profile_area.innerHTML = `<a href="../../users/login.html">Sign in to get personalized feeds, and to upload and engage with the content</a>`;
     //comm_panel.innerHTML = "";
     comm_panel.style.display = "none";
   }
@@ -177,36 +177,8 @@ const shortText = des.slice(0, 300);
 //const docURL = `http://localhost:3000/files/getContent/${value}${extension}/${screen}`;
 
 docURL = `https://content.gopress.online/content/${value}${extension}`;
-
 document.getElementById("doc-view-panel").innerHTML = generateViewerHTML(docURL, extension, dld_status);
-document.getElementById("con_title").innerText = title;
-document.title = title;
 document.getElementById("uploader").innerText = uploader;
-document.getElementById("desc-box").innerHTML = `
-<span id="descr">
-${isTruncated ? shortText + '...' : des}
-</span>
-${isTruncated ? '<a href="#" id="toggle-link">Read more</a>' : ''}
-`;
-
-    if (isTruncated) {
-    const toggleLink = document.getElementById('toggle-link');
-    const textSpan = document.getElementById('descr');
-
-    toggleLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      textSpan.style.opacity = 0;
-      toggleLink.style.opacity = 0;
-      setTimeout(() => {
-      const isExpanded = toggleLink.textContent === 'Read less';
-      textSpan.textContent = isExpanded ? shortText + '...' : des;
-      toggleLink.textContent = isExpanded ? 'Read more' : 'Read less';
-      textSpan.style.opacity = 1;
-      toggleLink.style.opacity = 1;
-      }, 200); // match the transition 
-
-    });
-  }
 
 })
 .catch(error => {
