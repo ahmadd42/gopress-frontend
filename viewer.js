@@ -37,7 +37,6 @@ try {
         const shortText = des.slice(0, 300);
         const docURL = `https://content.gopress.online/content/${match[1]}${extension}`;
         const view_html = generateViewerHTML(docURL, extension, dld_status);
-        const screen = (window.innerWidth < 1000) ? "small" : "big";
 
 
         // Load HTML template
@@ -188,7 +187,8 @@ viewer_html += (d_status === 0) ? ` oncontextmenu="return false"></div>` : `></d
 
 else if(ext === ".mp3" || ext === ".mp4" || ext === ".mpeg") {
 
-viewer_html = (screen === "small") ? `<div class="video-wrapper-mobile"><video id="myVideo" controls` : `<div class="video-wrapper"><video id="myVideo" controls`;
+//viewer_html = (screen === "small") ? `<div class="video-wrapper-mobile"><video id="myVideo" controls` : `<div class="video-wrapper"><video id="myVideo" controls`;
+viewer_html = `<div class="video-wrapper"><video id="myVideo" controls`;
 viewer_html += (d_status === 0) ? ` controlsList="nodownload" oncontextmenu="return false"` : ``;  
 viewer_html += ` autoplay><source src="${path}" type="video/mp4"></video></div>`;
 }
