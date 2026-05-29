@@ -60,7 +60,7 @@ try {
 
         html = html.replace(
           /__DESCHTML__/g,
-          `<span id="descr">${item.descr}</span>`
+          `<span id="descr">${item?.descr}</span>`
         );
 
         // Optional canonical URL
