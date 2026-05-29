@@ -107,7 +107,7 @@ try {
 
 }
 
-async function fetchDocument(id) {  
+/*async function fetchDocument(id) {  
 
   //fetch('http://192.168.0.106:3000/files/getbasicinfo', {
   fetch('https://i-press-backend-production.up.railway.app/files/getbasicinfo', {
@@ -169,7 +169,7 @@ ${isTruncated ? '<a href="#" id="toggle-link">Read more</a>' : ''}
 .catch(error => {
   console.error('Error:', error);
 });
-}
+}*/
 
 function generateViewerHTML(path, ext, d_status) {
 var viewer_html = "";
