@@ -137,13 +137,13 @@ else if(ext === ".jpg" || ext === ".jpeg" || ext === ".gif" || ext === ".png" ||
 viewer_html = `<div id="viewerContainer" style="margin-top:10px; padding-left: 1.5em; width:82%; 
 height:75%;"><img id="docViewer" src="${path}" style="width:100%;"`;
 
-viewer_html += (d_status === 0) ? ` oncontextmenu="return false"></div>` : `></div>`;
+viewer_html += ` oncontextmenu="return false"></div>`;
 }
 
 else if(ext === ".mp3" || ext === ".mp4" || ext === ".mpeg") {
 
 viewer_html = (screen === "small") ? `<div class="video-wrapper-mobile"><video id="myVideo" controls` : `<div class="video-wrapper"><video id="myVideo" controls`;
-viewer_html += (d_status === 0) ? ` controlsList="nodownload" oncontextmenu="return false"` : ``;  
+viewer_html += ` controlsList="nodownload" oncontextmenu="return false"`;  
 viewer_html += ` autoplay><source src="${path}" type="video/mp4"></video></div>`;
 }
 
