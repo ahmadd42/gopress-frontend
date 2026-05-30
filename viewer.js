@@ -41,6 +41,12 @@ try {
 
         let html = await templateResponse.text();
 
+        // Replace Page title
+        html = html.replace(
+          /__PAGETITLE__/g,
+          `${item?.title} - goPress` || "GoPress - share your stuff"
+        );
+
         // Replace SEO placeholders
         html = html.replace(
           /__TITLE__/g,
