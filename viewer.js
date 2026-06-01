@@ -58,6 +58,11 @@ try {
           item?.descr || "Document Viewer"
         );
 
+        html = html.replace(
+          /__PREVIEWIMAGE__/g,
+          `https://preview.gopress.online/preview/${match[1]}${item?.extension}` || "Preview Image"
+        );
+
         // Optional canonical URL
         html = html.replace(
           /__MYURL__/g,
