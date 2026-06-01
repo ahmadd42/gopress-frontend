@@ -30,11 +30,11 @@ try {
 
         const data = await apiResponse.json();
         const item = data[0];
-        let ext = ".mp4";
+        let ext;
 
-        if(item.extension === ".pdf")
+        if(item.extension === ".pdf" || item.extension === ".mp4")
         ext = ".jpg";
-        else if(item.extension === ".jpg" || item.extension === ".jpeg" || item.extension === ".gif" || item.extension === ".png" || item.extension === ".tiff")
+        else 
         ext = item.extension;
 
         // Load HTML template
@@ -63,13 +63,11 @@ try {
           item?.descr || "Document Viewer"
         );
 
-        if(ext != ".mp4") {
         html = html.replace(
           /__PREVIEWIMAGE__/g,
           `https://preview.gopress.online/preview/${match[1]}${ext}` || "Preview Image"
         );
-      }
-
+      
         // Optional canonical URL
         html = html.replace(
           /__MYURL__/g,
