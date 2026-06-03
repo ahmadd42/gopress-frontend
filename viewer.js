@@ -8,7 +8,12 @@ export default {
       /^\/viewer\/([^\/]+)\/([^\/]+)$/
     );
 
-    if(match) {
+     const match_s = url.pathname.match(
+      /^\/viewer-s\/([^\/]+)\/([^\/]+)$/
+    );
+
+
+    if(match || match_s) {
 
 try {
 
@@ -38,9 +43,11 @@ try {
         ext = item.extension;
 
         // Load HTML template
+        const template = match ? "/view/index.html" : "/view/index-s.html";
+
         const templateResponse = await env.ASSETS.fetch(
           new Request(
-            new URL("/view/index.html", request.url)
+            new URL(template, request.url)
           )
         );
 
@@ -83,6 +90,11 @@ try {
         html = html.replace(
           /__DOCID__/g,
           match[1]
+        );
+
+        html = html.replace(
+          /__SLUGTEXT__/g,
+          match[2]
         );
 
 
