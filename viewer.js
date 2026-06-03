@@ -14,8 +14,12 @@ export default {
 
 
     if(match || match_s) {
+    // Load HTML template
+    const template = match ? "/view/index.html" : "/view/index-s.html";
+    const id = match ? match[1] : match_s[1];
+    const slug = match ? match[2] : match_s[2];
 
-try {
+    try {
 
         // Call backend API
         const apiResponse = await fetch(
@@ -28,7 +32,7 @@ try {
             },
 
             body: JSON.stringify({
-              contentid: match[1]
+              contentid: id
             })
           }
         );
@@ -41,9 +45,6 @@ try {
         ext = ".jpg";
         else 
         ext = item.extension;
-
-        // Load HTML template
-        const template = match ? "/view/index.html" : "/view/index-s.html";
 
         const templateResponse = await env.ASSETS.fetch(
           new Request(
@@ -72,13 +73,13 @@ try {
 
         html = html.replace(
           /__PREVIEWIMAGE__/g,
-          `https://preview.gopress.online/preview/${match[1]}${ext}` || "Preview Image"
+          `https://preview.gopress.online/preview/${id}${ext}` || "Preview Image"
         );
       
         // Optional canonical URL
         html = html.replace(
           /__MYURL__/g,
-          `https://gopress.online/viewer/${match[1]}/${match[2]}`
+          `https://gopress.online/viewer/${id}/${slug}`
         );
 
         html = html.replace(
@@ -89,12 +90,12 @@ try {
         // Optional canonical URL
         html = html.replace(
           /__DOCID__/g,
-          match[1]
+          id
         );
 
         html = html.replace(
           /__SLUGTEXT__/g,
-          match[2]
+          slug
         );
 
 
