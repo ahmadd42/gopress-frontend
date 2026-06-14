@@ -99,8 +99,7 @@ padding-left: 1.5em;
     height: 20%;
     padding-top: .5rem;
     background-color: #ffffff;
-    opacity: 98%;
-    z-index: 10;
+    z-index: 800;
 }
 .tool-bar {
     display: flex;
@@ -357,6 +356,8 @@ font-size: 13px;
 .doc-item {
     display: flex;
     width: 96%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     gap: .5em;
     border: solid 1px;
     border-radius: 20px;
@@ -367,6 +368,15 @@ font-size: 13px;
 .doc-item:hover {
     border-color: #585854;
     background-color: #f1f3d5;
+}
+.feed-cap {
+    display: flex;
+    width: 96%;
+    gap: .5em;
+    margin-bottom: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
 }
 .doc-desc {
     width: 72%;

@@ -1,0 +1,218 @@
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  .banner {
+    width:100%; height:300px;
+    background: linear-gradient(135deg, #d8dff5 0%, #ede4f7 40%, #d4f0e8 100%);
+    position:relative; overflow:hidden;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+  }
+
+  .blob {
+    position:absolute; border-radius:50%;
+    filter: blur(60px);
+    animation: blobDrift var(--bd,12s) ease-in-out infinite var(--bdd,0s);
+  }
+  @keyframes blobDrift {
+    0%,100%{ transform:translateY(0) translateX(0); }
+    40%    { transform:translateY(-18px) translateX(14px); }
+    70%    { transform:translateY(10px) translateX(-10px); }
+  }
+
+  .dots {
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle, rgba(80,60,180,0.13) 1.2px, transparent 1.2px);
+    background-size:38px 38px; pointer-events:none;
+  }
+
+  .wave-svg { position:absolute; width:100%; left:0; pointer-events:none; }
+  .wave-path { fill:none; stroke-width:1.3; stroke-dasharray:8 5; opacity:0.28; }
+  .wave-top    { animation: dashFwd 2s linear infinite; }
+  .wave-bottom { animation: dashFwd 2s linear infinite reverse; }
+  @keyframes dashFwd { from{stroke-dashoffset:0} to{stroke-dashoffset:-65} }
+
+  .scenes-wrapper {
+    position:absolute; left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    z-index:20;
+  }
+  .scene {
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    text-align:center;
+    white-space:nowrap;
+    width:max-content;
+  }
+
+  .subline {
+    font-size:11px; letter-spacing:4px; color:#7a6aaa;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .headline {
+    font-family:Georgia,serif; font-size:27px; font-weight:700;
+    background: linear-gradient(90deg,#3a2a8a,#0e7a5a,#a02848);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text; letter-spacing:0.3px;
+  }
+  .divider {
+    width:300px; height:1px;
+    background:linear-gradient(90deg,transparent,#8a78b055,transparent);
+    margin:9px auto;
+  }
+  .cta { font-size:10px; letter-spacing:3px; color:#0e7a5a; text-transform:uppercase; }
+  .cursor {
+    display:inline-block; width:2px; height:11px;
+    background:#0e7a5a; margin-left:3px; vertical-align:middle;
+    animation: blink 1.2s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /*
+    Cycle = 16s total. Each scene gets 8s.
+    Per scene: fly-in 1.2s, hold 3s, fly-out 1.2s, gap 1s → wait 1.6s for other scene
+    In percentages of 8s half:
+      fly-in:  0–15%  (1.2s)
+      hold:    15–53% (3s)
+      fly-out: 53–68% (1.2s)
+      gap:     68–100% (2.6s — split: 1s our gap + 1.6s other scene doing its thing)
+
+    Scene A occupies 0–50% of 16s (0–8s)
+    Scene B occupies 50–100% of 16s (8–16s)
+    Gap A→B: A fly-out ends at 68% of 8s = 5.44s, B fly-in starts at 50% of 16s = 8s → gap = 2.56s... too long
+
+    Let's be explicit with absolute timings in a 16s cycle:
+      A fly-in:  0s–1.2s   (0–7.5%)
+      A hold:    1.2s–4.2s  (7.5–26.25%)
+      A fly-out: 4.2s–5.4s  (26.25–33.75%)
+      gap:       5.4s–6.4s  (33.75–40%)   ← 1 second gap
+      B fly-in:  6.4s–7.6s  (40–47.5%)
+      B hold:    7.6s–10.6s (47.5–66.25%)
+      B fly-out: 10.6s–11.8s(66.25–73.75%)
+      gap:       11.8s–12.8s(73.75–80%)   ← 1 second gap
+      (then loops back, A starts at 12.8s... but cycle is 16s)
+
+    Actually to keep it clean with equal gaps, total = 1.2+3+1.2+1 + 1.2+3+1.2+1 = 12.8s
+    Round to 13s cycle:
+      A in:  0–9.2%  (0–1.2s)
+      A hold:9.2–32.3% (1.2–4.2s)
+      A out: 32.3–41.5% (4.2–5.4s)
+      gap:   41.5–49.2% (5.4–6.4s)
+      B in:  49.2–58.5% (6.4–7.6s)
+      B hold:58.5–81.5% (7.6–10.6s)
+      B out: 81.5–90.8% (10.6–11.8s)
+      gap:   90.8–100% (11.8–13s)
+  */
+
+  .scene-a { animation: sceneA 13s ease-in-out infinite; }
+  @keyframes sceneA {
+    0%     { opacity:0; transform:translateX(-50%) translateY(18px); }
+    9.2%   { opacity:1; transform:translateX(-50%) translateY(0); }
+    32.3%  { opacity:1; transform:translateX(-50%) translateY(0); }
+    41.5%  { opacity:0; transform:translateX(-50%) translateY(-16px); }
+    100%   { opacity:0; transform:translateX(-50%) translateY(18px); }
+  }
+
+  .scene-b { animation: sceneB 13s ease-in-out infinite; }
+  @keyframes sceneB {
+    0%     { opacity:0; transform:translateX(-50%) translateY(18px); }
+    49.2%  { opacity:0; transform:translateX(-50%) translateY(18px); }
+    58.5%  { opacity:1; transform:translateX(-50%) translateY(0); }
+    81.5%  { opacity:1; transform:translateX(-50%) translateY(0); }
+    90.8%  { opacity:0; transform:translateX(-50%) translateY(-16px); }
+    100%   { opacity:0; transform:translateX(-50%) translateY(18px); }
+  }
+
+  .pill {
+    position:absolute; border-radius:999px; padding:0 18px; height:40px;
+    display:flex; align-items:center; gap:7px;
+    font-size:13px; font-weight:600; white-space:nowrap; z-index:10;
+    box-shadow:0 4px 20px rgba(0,0,0,0.13);
+  }
+  .pill-outline { background:transparent; border:1.5px solid; font-size:12px; height:34px; }
+
+  .pill-pdf      { background:linear-gradient(135deg,#6c62d4,#4e46a8); color:#e8e6ff; }
+  .pill-video    { background:linear-gradient(135deg,#22b584,#158f66); color:#ccf5ea; }
+  .pill-image    { background:linear-gradient(135deg,#e05c88,#b03060); color:#ffe0ec; }
+  .pill-like     { background:linear-gradient(135deg,#f07040,#c04820); color:#ffe8dc; }
+  .pill-comment  { background:linear-gradient(135deg,#3a7ad5,#1c55a8); color:#d0e8ff; }
+  .pill-explore  { border-color:#8878b0aa; color:#5a4a8a; }
+  .pill-knowledge{ border-color:#0e7a6a88; color:#0e7a5a; }
+
+  .pa { animation: pillA 13s ease-in-out infinite var(--cd,0s); }
+  @keyframes pillA {
+    0%     { opacity:0; transform:translate(var(--ox,0px),var(--oy,60px)) rotate(var(--or,0deg)) scale(0.7); }
+    9.2%   { opacity:1; transform:translate(0,0) rotate(0deg) scale(1.05); }
+    12%    { transform:translate(0,0) rotate(0deg) scale(1); }
+    22%    { transform:translate(0,var(--bob,-8px)) rotate(var(--br,1deg)); }
+    32%    { transform:translate(0,0) rotate(0deg); }
+    38%    { opacity:1; }
+    44%    { opacity:0; transform:translate(var(--ox,0px),var(--oy,-60px)) rotate(var(--or,0deg)) scale(0.7); }
+    100%   { opacity:0; transform:translate(var(--ox,0px),var(--oy,60px)) rotate(var(--or,0deg)) scale(0.7); }
+  }
+
+  .pb { animation: pillB 13s ease-in-out infinite var(--cd,0s); }
+  @keyframes pillB {
+    0%     { opacity:0; transform:translate(var(--ox,0px),var(--oy,60px)) rotate(var(--or,0deg)) scale(0.7); }
+    49.2%  { opacity:0; transform:translate(var(--ox,0px),var(--oy,60px)) rotate(var(--or,0deg)) scale(0.7); }
+    58.5%  { opacity:1; transform:translate(0,0) rotate(0deg) scale(1.05); }
+    61.5%  { transform:translate(0,0) rotate(0deg) scale(1); }
+    71%    { transform:translate(0,var(--bob,-8px)) rotate(var(--br,1deg)); }
+    81%    { transform:translate(0,0) rotate(0deg); }
+    87%    { opacity:1; }
+    93%    { opacity:0; transform:translate(var(--ox,0px),var(--oy,-60px)) rotate(var(--or,0deg)) scale(0.7); }
+    100%   { opacity:0; transform:translate(var(--ox,0px),var(--oy,60px)) rotate(var(--or,0deg)) scale(0.7); }
+  }
+</style>
+
+<div class="banner">
+  <div class="dots"></div>
+
+  <div class="blob" style="width:220px;height:220px;background:#b0a0f0;top:-80px;left:4%;opacity:0.45;--bd:10s;"></div>
+  <div class="blob" style="width:200px;height:200px;background:#90dfc0;top:100px;left:38%;opacity:0.38;--bd:13s;--bdd:1.5s;"></div>
+  <div class="blob" style="width:240px;height:240px;background:#f0b0cc;top:-90px;left:76%;opacity:0.38;--bd:9s;--bdd:0.5s;"></div>
+  <div class="blob" style="width:160px;height:160px;background:#f8c8a0;top:120px;left:60%;opacity:0.35;--bd:11s;--bdd:2s;"></div>
+  <div class="blob" style="width:170px;height:170px;background:#a8d0f8;top:80px;left:18%;opacity:0.35;--bd:14s;--bdd:0.8s;"></div>
+
+  <svg class="wave-svg" style="top:0;height:70px;" viewBox="0 0 1000 70" preserveAspectRatio="none">
+    <path class="wave-path wave-top" stroke="#6050b8" d="M0,45 Q125,30 250,45 Q375,60 500,45 Q625,30 750,45 Q875,60 1000,45"/>
+  </svg>
+  <svg class="wave-svg" style="bottom:0;height:70px;" viewBox="0 0 1000 70" preserveAspectRatio="none">
+    <path class="wave-path wave-bottom" stroke="#0e7a5a" d="M0,28 Q125,43 250,28 Q375,13 500,28 Q625,43 750,28 Q875,13 1000,28"/>
+  </svg>
+
+  <div class="scenes-wrapper">
+    <div class="scene scene-a">
+      <div class="subline">Share &nbsp;·&nbsp; Discover &nbsp;·&nbsp; Inspire</div>
+      <div class="headline">Let the world know of your work</div>
+      <div class="divider"></div>
+      <div class="cta">Upload &nbsp;·&nbsp; Share &nbsp;·&nbsp; Connect<span class="cursor"></span></div>
+    </div>
+    <div class="scene scene-b">
+      <div class="subline">One platform. All your content.</div>
+      <div class="headline">Share your PDFs, images and videos</div>
+      <div class="divider"></div>
+      <div class="cta">Upload &nbsp;·&nbsp; Share &nbsp;·&nbsp; Connect<span class="cursor"></span></div>
+    </div>
+  </div>
+
+  <!-- Scene A pills -->
+  <div class="pill pill-pdf pa"      style="left:3%;top:118px;--cd:0.1s;--ox:-120px;--oy:0px;--or:-8deg;--bob:-10px;--br:2deg;">📄 PDFs</div>
+  <div class="pill pill-video pa"    style="left:13%;top:72px;--cd:0.3s;--ox:-80px;--oy:-80px;--or:-12deg;--bob:-12px;--br:-1.5deg;">▶ Videos</div>
+  <div class="pill pill-outline pill-explore pa" style="left:11%;top:185px;--cd:0.5s;--ox:-90px;--oy:80px;--or:10deg;--bob:-7px;--br:2.5deg;">✦ Explore</div>
+  <div class="pill pill-image pa"    style="right:13%;top:72px;--cd:0.35s;--ox:80px;--oy:-80px;--or:12deg;--bob:-12px;--br:1.5deg;">🖼 Images</div>
+  <div class="pill pill-like pa"     style="right:3%;top:118px;--cd:0.15s;--ox:120px;--oy:0px;--or:8deg;--bob:-9px;--br:-2deg;">♥ Likes</div>
+  <div class="pill pill-comment pa"  style="right:13%;top:185px;--cd:0.55s;--ox:90px;--oy:80px;--or:-10deg;--bob:-8px;--br:2deg;">💬 Comments</div>
+  <div class="pill pill-outline pill-knowledge pa" style="right:2%;top:192px;--cd:0.75s;--ox:100px;--oy:80px;--or:-6deg;--bob:-6px;--br:-1.5deg;">✦ Knowledge</div>
+
+  <!-- Scene B pills -->
+  <div class="pill pill-pdf pb"      style="left:3%;top:118px;--cd:0.1s;--ox:-120px;--oy:0px;--or:-8deg;--bob:-10px;--br:2deg;">📄 PDFs</div>
+  <div class="pill pill-video pb"    style="left:13%;top:72px;--cd:0.3s;--ox:-80px;--oy:-80px;--or:-12deg;--bob:-12px;--br:-1.5deg;">▶ Videos</div>
+  <div class="pill pill-outline pill-explore pb" style="left:11%;top:185px;--cd:0.5s;--ox:-90px;--oy:80px;--or:10deg;--bob:-7px;--br:2.5deg;">✦ Explore</div>
+  <div class="pill pill-image pb"    style="right:13%;top:72px;--cd:0.35s;--ox:80px;--oy:-80px;--or:12deg;--bob:-12px;--br:1.5deg;">🖼 Images</div>
+  <div class="pill pill-like pb"     style="right:3%;top:118px;--cd:0.15s;--ox:120px;--oy:0px;--or:8deg;--bob:-9px;--br:-2deg;">♥ Likes</div>
+  <div class="pill pill-comment pb"  style="right:13%;top:185px;--cd:0.55s;--ox:90px;--oy:80px;--or:-10deg;--bob:-8px;--br:2deg;">💬 Comments</div>
+  <div class="pill pill-outline pill-knowledge pb" style="right:2%;top:192px;--cd:0.75s;--ox:100px;--oy:80px;--or:-6deg;--bob:-6px;--br:-1.5deg;">✦ Knowledge</div>
+</div>
