@@ -39,6 +39,12 @@
   width: 77vw;
   height: 87vh;
 }
+
+.doc-viewer-mobile {
+  width: 90vw;
+  height: 60vh;
+}
+
 @media print {
   .body {
     display: none;
