@@ -6,7 +6,7 @@
   //const params = new URLSearchParams(window.location.search);
   //const value = params.get("id"); // replace with actual param name
   const value = document.getElementById("doc-id").innerText;
-  const slug = document.getElementById("slug-text").innerText;
+  //const slug = document.getElementById("slug-text").innerText;
   const emojiBtn = document.getElementById("emojiBtn");
   const pickerContainer = document.getElementById("emojiPickerContainer");
   const commentBox = document.getElementById("comment");
