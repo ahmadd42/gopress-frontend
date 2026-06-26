@@ -230,11 +230,14 @@ opacity: 0.7;
   color: #553d20;
 }
 .report-div {
-  padding-left: 50em;
+  padding-left: 60em;
 }
 .report-div a{
+  padding: .4em;
   background-color: #472f05;
   color: #ffffff;
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: .8em;
+  border-radius: .5em;
 }
