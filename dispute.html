@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="">
+
+  <link rel="stylesheet" href="styling/landing-page.css">
+  <link rel="stylesheet" href="styling/landing-page-mobile.css">
+  <link rel="stylesheet" href="styling/signup-page.css">
+  <link rel="stylesheet" href="styling/modal-window.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <link rel="icon" type="image/png" href="graphics/favicon.png">
+  <script src="assets/dispute.js" defer></script>
+  <title>goPress - Report an issue regarding content</title>
+</head>
+<body>
+
+<div id="container">
+
+      <div class="nav-bar">
+      <div class="nav-bar-top"><button class="menu-btn nav-menu"></button></div>
+      <div class="navbar-item-container">
+      <div class="nav-bar-item"><button class="nav-btn nav-home"></button></div>
+      <div class="nav-bar-caption">Home</div>
+      </div>
+      <div class="navbar-item-container">
+      <div class="nav-bar-item"><button class="nav-btn nav-trending"></button></div>
+      <div class="nav-bar-caption">Trending</div>
+      </div>
+      <div class="navbar-item-container">
+      <div class="nav-bar-item"><button class="nav-btn nav-follows"></button></div>
+      <div class="nav-bar-caption">Followings</div>
+      </div>
+      <div class="navbar-item-container">
+      <div class="nav-bar-item"><button class="nav-btn nav-pub"></button></div>
+      <div class="nav-bar-caption">Publications</div>
+      </div>
+    </div>
+
+    <div class="top-bar-signup">
+
+        <div class="tool-bar">
+        <div class="main-logo bg-img-setting"></div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <button type="submit"></button>
+        </div>
+        <div class="voice-search"><button></button></div>
+        <div><button id="share_btn" class="publish-btn">Share</button></div>
+        <div id="profile"></div>
+        </div>
+      
+        </div>
+
+        <div>
+
+<form class="signup-form" id="dispute_form" tabindex="0">
+
+    <h2>Report an issue with this content</h2>
+
+    <div style="display: flex;">
+
+ <div class="labels1">
+    <label for="con-id">Content Id:</label>
+    <label for="email">Email Address:</label>
+    <label for="disp-cat">Type of issue:</label>
+    <label for="details" title="Please provide as much details as possible, including a link to the referenced content in case of copyright infringement">Details of the issue:</label>        
+ </div>           
+
+ <div class="inputs1">
+    <input type="text" id="con-id" name="con-id" tabindex="0" value="010bd3cecdd4ae90a9c6be1628027a44" disabled>
+    <input type="email" id="email" name="email" tabindex="1" required>
+    <select id="disp-cat" name="disp-cat" tabindex="2" required>
+      <option value="copyright">Copyright Infringement</option>
+      <option value="other">Other</option>
+    </select>
+    <textarea id="details" class="details-box" placeholder="Please provide as much details as possible, including a link to the referenced content in case of copyright infringement" rows="30" cols="30" required></textarea>
+    <button id="report_btn" type="submit" tabindex="">Report</button>
+ </div>
+
+ </div>
+
+</form>
+
+</div>
+
+    <div class="ads-panel"></div>
+</div>  
+
+<!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div style="display: flex;">
+      <div class="favicon-div"></div>
+      <p style="margin-left: 1em;">Issue reported successfully.</p>
+      </div>
+      <div class="last-buttons">
+      <button class="close-btn" id="home_btn">Back to Home</button>
+
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>    
