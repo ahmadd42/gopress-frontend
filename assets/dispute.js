@@ -4,7 +4,7 @@ const success = document.getElementById("successModal");
 const home_btn = document.getElementById("home_btn");
 const id = urlParams.get('id');
 
-document.getElementById("con-id").innerText = id;
+document.getElementById("con-id").value = id;
 
 async function handlePost(event) {
 
