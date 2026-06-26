@@ -181,7 +181,7 @@ const shortText = des.slice(0, 300);
 docURL = `https://content.gopress.online/content/${value}${extension}`;
 document.getElementById("doc-view-panel").innerHTML = generateViewerHTML(docURL, extension, dld_status);
 document.getElementById("uploader").innerText = uploader;
-document.getElementById("report-div").innerHTML = `<a href="dispute.html?id=${value}">Report an issue</a>`;
+document.getElementById("report-div").innerHTML = `<a href="../../dispute.html?id=${value}">Report an issue</a>`;
 })
 .catch(error => {
   console.error('Error:', error);
