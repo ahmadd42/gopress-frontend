@@ -345,6 +345,7 @@ font-size: 13px;
     padding-left: 30%;
 }
 .grid-text {
+    margin-top: .5em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: .95em;
     text-align: justify;
