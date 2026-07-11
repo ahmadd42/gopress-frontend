@@ -24,7 +24,7 @@
   left: 7%;
   top: 18%;
   overflow-y: auto;
-}
+  }
 .docview-container-mobile {
   margin-top: 1em;
   width: 100%;
@@ -54,7 +54,7 @@
   }
 }
 .reactions-panel {
-    position:static;
+    position:absolute;
     margin-left: 8%;
     margin-right: 15%;
     margin-top: 1.5em;
