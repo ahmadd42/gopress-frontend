@@ -225,3 +225,16 @@ opacity: 0.7;
   font-weight: bold;
   color: #553d20;
 }
+.report-div {
+  display: flex;
+  justify-content: flex-end;
+}
+.report-div a{
+  padding: .4em;
+  background-color: #472f05;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8em;
+  border-radius: .5em;
+}
