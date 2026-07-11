@@ -108,14 +108,6 @@ padding-left: 1.5em;
     height: 2.5em;
     background-image: url("../graphics/logo2.jpg");
 }
-.middle-div {
-    position: fixed;
-    top: 0;
-    left: 8%;
-    width: 77%;
-    height: 100%;
-    border: solid 1px;
-}
 .top-bar {
     position: fixed;
     top: 0;
