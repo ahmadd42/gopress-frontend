@@ -54,6 +54,7 @@
   }
 }
 .reactions-panel {
+    position:static;
     margin-left: 8%;
     margin-right: 15%;
     margin-top: 1.5em;
