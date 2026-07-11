@@ -20,8 +20,9 @@
     z-index: 10;
 }
 .doc-view-container {
-  margin-left: 7%;
-  margin-top: 1.5em;
+  position:fixed;
+  left: 7%;
+  top: 14%;
   overflow-y: auto;
 }
 .docview-container-mobile {
@@ -66,7 +67,7 @@
 .title-container {
   position:fixed;
   display: flex;
-  top: 11%;
+  top: 12%;
   left: 7%;
 }
 .title-container-mobile {
