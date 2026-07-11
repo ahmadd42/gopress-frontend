@@ -61,10 +61,7 @@
   }
 }
 .reactions-panel {
-    position:fixed;
-    left: 7%;
-    margin-right: 15%;
-    top: 98%;
+    margin-top: 98%;
 }
 .reactions-panel-mobile {
     margin-left: 1rem;
