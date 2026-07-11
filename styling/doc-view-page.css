@@ -22,7 +22,7 @@
 .doc-view-container {
   position:fixed;
   left: 7%;
-  top: 98%;
+  top: 7%;
   overflow-y: auto;
   }
 .docview-container-mobile {
@@ -54,10 +54,10 @@
   }
 }
 .reactions-panel {
-    position:absolute;
-    margin-left: 8%;
+    position:fixed;
+    left: 7%;
     margin-right: 15%;
-    margin-top: 1.5em;
+    top: 98%;
 }
 .reactions-panel-mobile {
     margin-left: 1rem;
