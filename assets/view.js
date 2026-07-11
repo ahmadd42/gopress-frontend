@@ -505,4 +505,4 @@ like_btn.addEventListener("click", handleLike);
 dislike_btn.addEventListener("mouseenter", highlightButton);
 dislike_btn.addEventListener("mouseleave", normalizeButton);
 dislike_btn.addEventListener("click", handleDislike);
-document.getElementById("docViewer").addEventListener("contextmenu", handleRightClick);
+//document.getElementById("docViewer").addEventListener("contextmenu", handleRightClick);
