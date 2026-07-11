@@ -8,11 +8,18 @@
     z-index: 100;
     background-color: #fff;
 }
-.docview-top-bar {
+.middle-div {
     position: fixed;
     top: 0;
     left: 8%;
     width: 77%;
+    height: 100%;
+}
+.docview-top-bar {
+    /*position: fixed;
+    top: 0;
+    left: 8%;
+    width: 77%;*/
     height: 10%;
     padding-top: .5rem;
     background-color: #ffffff;
@@ -20,9 +27,9 @@
     z-index: 10;
 }
 .doc-view-container {
-  position:fixed;
+/*  position:fixed;
   left: 7%;
-  top: 20%;
+  top: 20%;*/
   overflow-y: auto;
   }
 .docview-container-mobile {
