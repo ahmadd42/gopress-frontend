@@ -22,7 +22,7 @@
 .doc-view-container {
   position:fixed;
   left: 7%;
-  top: 7%;
+  top: 20%;
   overflow-y: auto;
   }
 .docview-container-mobile {
