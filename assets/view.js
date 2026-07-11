@@ -486,12 +486,19 @@ function handleRightClick() {
 }
 
 function maximizePdf() {
+  const iframe = document.getElementById("docViewer"); // Replace 'myIframe' with your iframe's ID
     document.getElementById("pdf-parent").requestFullscreen();
+    iframe.style.width = "98vw";
+    iframe.style.width = "98vh";
 }
 
 function minimizePdf() {
     if (document.fullscreenElement) {
+        const iframe = document.getElementById("docViewer"); // Replace 'myIframe' with your iframe's ID
         document.exitFullscreen();
+        iframe.style.width = "98vw";
+        iframe.style.width = "98vh";
+
     }
 }
 
