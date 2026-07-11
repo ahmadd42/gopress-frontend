@@ -65,8 +65,8 @@
 }
 .title-container {
   display: flex;
-  margin-top: 5em;
-  margin-left: 7%;
+  top: 11%;
+  left: 7%;
 }
 .title-container-mobile {
   width: 100%;
