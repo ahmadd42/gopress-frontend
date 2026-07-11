@@ -36,8 +36,8 @@
 }
 
 .doc-viewer {
-  width: 77vw;
-  height: 87vh;
+  width: 98vw;
+  height: 98vh;
 }
 @media print {
   .body {
