@@ -47,7 +47,9 @@
     display: none !important;
     visibility: hidden;
   }
-  .doc-viewer {
+}
+@media screen and (max-width: 799px) {
+    .doc-viewer {
     width: 98vw;
   }
 }
