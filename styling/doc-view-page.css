@@ -47,6 +47,9 @@
     display: none !important;
     visibility: hidden;
   }
+  .doc-viewer {
+    width: 98vw;
+  }
 }
 .reactions-panel {
     margin-left: 8%;
